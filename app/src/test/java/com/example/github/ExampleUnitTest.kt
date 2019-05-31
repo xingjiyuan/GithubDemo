@@ -31,6 +31,22 @@ class ExampleUnitTest {
         }
 
         Assert.assertEquals(result2, 2)
+
+        val result3 = true.no {
+            1
+        }.otherwise {
+            2
+        }
+
+        Assert.assertEquals(result3, 2)
+
+        val result4 = false.no {
+            1
+        }.otherwise {
+            2
+        }
+
+        Assert.assertEquals(result4, 1)
     }
 
     fun getABoolean() = true
