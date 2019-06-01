@@ -1,4 +1,4 @@
-package com.example.github
+package com.example.common
 
 sealed class BooleanExt<out T>
 

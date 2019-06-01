@@ -1,5 +1,8 @@
 package com.example.github
 
+import com.example.common.no
+import com.example.common.otherwise
+import com.example.common.yes
 import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Test
