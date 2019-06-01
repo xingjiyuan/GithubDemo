@@ -98,7 +98,3 @@ abstract class BaseFragment<out P : BasePresenter<BaseFragment<P>>> : IMvpView<P
         presenter.onPause()
     }
 }
-
-class MainPresenter : BasePresenter<MainFragment>()
-
-class MainFragment : BaseFragment<MainPresenter>()
