@@ -16,6 +16,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.Settings
 import com.example.github.R
+import com.example.mvp.impl.MainFragment
 
 class LoginActivity : AppCompatActivity() {
 
@@ -99,6 +100,7 @@ class LoginActivity : AppCompatActivity() {
 
             setText(Settings.password)
         }
+        MainFragment()
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
