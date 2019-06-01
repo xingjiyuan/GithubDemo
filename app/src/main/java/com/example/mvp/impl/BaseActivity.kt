@@ -93,4 +93,8 @@ abstract class BaseActivity<out P : BasePresenter<BaseActivity<P>>> : IMvpView<P
         super.onPause()
         presenter.onPause()
     }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        presenter.onViewStateRestored(savedInstanceState)
+    }
 }

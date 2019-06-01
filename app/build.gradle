@@ -34,4 +34,29 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.21"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
+
+    api 'io.reactivex:rxandroid:1.2.1'
+    api 'io.reactivex:rxjava:1.1.6'
+
+    api 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    api 'com.squareup.okhttp3:okhttp:3.8.0'
+
+    api "org.jetbrains.anko:anko-commons:$anko_version"
+    api "org.jetbrains.anko:anko-sdk15:$anko_version"
+    api "org.jetbrains.anko:anko-sdk15-listeners:$anko_version"
+    api "org.jetbrains.anko:anko-sdk15-coroutines:$anko_version"
+    api "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+    api "org.jetbrains.anko:anko-appcompat-v7-listeners:$anko_version"
+
+
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    api 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
+
+    api 'com.github.tony19:logback-android-core:1.1.1-6'
+    api('com.github.tony19:logback-android-classic:1.1.1-6') {
+        // workaround issue #73
+        exclude group: 'com.google.android', module: 'android'
+    }
+    api 'org.slf4j:slf4j-api:1.7.21'
 }
