@@ -1,5 +1,7 @@
 package com.example.mvp.impl
 
+import android.content.res.Configuration
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.example.mvp.IMvpView
 import com.example.mvp.IPresenter
@@ -19,7 +21,7 @@ abstract class BaseFragment<out P : BasePresenter<BaseFragment<P>>> : IMvpView<P
         presenter.view = this
     }
 
-    fun createPresenterKt(): P {
+    private fun createPresenterKt(): P {
         sequence {
             var thisClass: KClass<*> = this@BaseFragment::class
             while (true) {
@@ -49,6 +51,51 @@ abstract class BaseFragment<out P : BasePresenter<BaseFragment<P>>> : IMvpView<P
         }.first {
             it is Class<*> && IPresenter::class.java.isAssignableFrom(it)
         }.let { return (it as Class<P>).newInstance() }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter.onCreate(savedInstanceState)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        presenter.onSaveInstanceState(outState)
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        presenter.onViewStateRestored(savedInstanceState)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        presenter.onConfigurationChanged(newConfig)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        presenter.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.onStop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        presenter.onPause()
     }
 }
 
