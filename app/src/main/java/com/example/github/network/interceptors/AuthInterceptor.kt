@@ -1,7 +1,7 @@
 package com.example.github.network.interceptors
 
 import android.util.Base64
-import com.example.github.model.AccountManager
+import com.example.github.model.account.AccountManager
 import okhttp3.Interceptor
 import okhttp3.Response
 
