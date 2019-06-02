@@ -24,6 +24,7 @@ class Preferences<T>(val context: Context, val name: String, val default: T, val
         return when (default) {
             is Long -> prefs.getLong(key, default)
             is String -> prefs.getString(key, default)
+            is Int -> prefs.getInt(key, default)
             else -> throw  IllegalArgumentException("Unsupported type.")
         } as T
     }
@@ -33,7 +34,8 @@ class Preferences<T>(val context: Context, val name: String, val default: T, val
             when (value) {
                 is Long -> putLong(key, value)
                 is String -> putString(key, value)
-                else -> throw IllegalArgumentException("Unsupported type.")
+                is Int -> putInt(key, value)
+                else -> throw IllegalArgumentException("Unsupported type. ${value!!}")
             }
             apply()
         }
