@@ -1,5 +1,7 @@
 package com.example.github.view
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.view.View
 import android.widget.AutoCompleteTextView
@@ -47,19 +49,37 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
         view.error = tips
     }
 
+    private fun showProgress(show: Boolean) {
+        val shortAnimTime = resources.getInteger(android.R.integer.config_shortAnimTime)
+        loginForm.animate().setDuration(shortAnimTime.toLong()).alpha(
+            (if (show) 0 else 1).toFloat()
+        ).setListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                loginForm.visibility = if (show) View.GONE else View.VISIBLE
+            }
+        })
+        loginProgress.animate().setDuration(shortAnimTime.toLong()).alpha(
+            (if (show) 1 else 0).toFloat()
+        ).setListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                loginProgress.visibility = if (show) View.VISIBLE else View.GONE
+            }
+        })
+    }
+
     fun onLoginStart() {
-        loginProgress.visibility = View.VISIBLE
+        showProgress(true)
     }
 
     fun onLoginError(e: Throwable) {
         e.printStackTrace()
         toast("登录失败")
-        loginProgress.visibility = View.GONE
+        showProgress(false)
     }
 
     fun onLoginSuccess() {
         toast("登录成功")
-        loginProgress.visibility = View.GONE
+        showProgress(false)
     }
 
     fun onDataInit(name: String, passwd: String) {
