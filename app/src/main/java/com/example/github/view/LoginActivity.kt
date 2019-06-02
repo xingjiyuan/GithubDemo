@@ -2,9 +2,11 @@ package com.example.github.view
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import com.bennyhuo.tieguanyin.annotations.ActivityBuilder
 import com.example.common.otherwise
 import com.example.common.yes
 import com.example.github.R
@@ -13,6 +15,8 @@ import com.example.github.utils.hideSoftInput
 import com.example.mvp.impl.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
+
+@ActivityBuilder(flags = [Intent.FLAG_ACTIVITY_NO_HISTORY])
 class LoginActivity : BaseActivity<LoginPresenter>() {
 
 
@@ -72,6 +76,7 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
     fun onLoginSuccess() {
         toast("登录成功")
         showProgress(false)
+        startMainActivity()
     }
 
     fun onDataInit(name: String, passwd: String) {

@@ -14,7 +14,6 @@ package retrofit2.adapter.rxjava;/*
  * limitations under the License.
  */
 
-import android.support.annotation.Nullable;
 import retrofit2.Call;
 import retrofit2.CallAdapter;
 import retrofit2.Response;
@@ -22,6 +21,7 @@ import rx.Observable;
 import rx.Observable.OnSubscribe;
 import rx.Scheduler;
 
+import javax.annotation.Nullable;
 import java.lang.reflect.Type;
 
 final class RxJavaCallAdapter2<R> implements CallAdapter<R, Object> {

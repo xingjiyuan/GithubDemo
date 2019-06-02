@@ -14,7 +14,6 @@ package retrofit2.adapter.rxjava;/*
  * limitations under the License.
  */
 
-import android.support.annotation.Nullable;
 import org.jetbrains.annotations.NotNull;
 import retrofit2.CallAdapter;
 import retrofit2.HttpException;
@@ -25,6 +24,7 @@ import rx.Observable;
 import rx.Scheduler;
 import rx.Single;
 
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
