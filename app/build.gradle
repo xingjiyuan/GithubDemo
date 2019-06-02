@@ -13,6 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -59,4 +60,5 @@ dependencies {
         exclude group: 'com.google.android', module: 'android'
     }
     api 'org.slf4j:slf4j-api:1.7.21'
+    implementation 'com.android.support:multidex:1.0.3'
 }

@@ -1,6 +1,8 @@
 package com.example.github.network
 
 import com.example.github.AppContext
+import com.example.github.network.interceptors.AcceptInterceptor
+import com.example.github.network.interceptors.AuthInterceptor
 import com.example.github.utils.ensureDir
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -28,6 +30,8 @@ val retrofit by lazy {
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .cache(Cache(cacheFile, 1024 * 1024 * 1024))
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .addInterceptor(AuthInterceptor())
+                .addInterceptor(AcceptInterceptor())
                 .build()
         ).baseUrl(BASE_URL).build()
 }
