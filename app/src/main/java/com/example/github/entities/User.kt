@@ -1,12 +1,15 @@
 package com.example.github.entities
 
+import android.os.Parcelable
 import com.example.common.anno.PoKo
+import kotlinx.android.parcel.Parcelize
 
 
 /**
  * Created by benny on 7/3/17.
  */
 @PoKo
+@Parcelize
 data class User(
     var login: String,
     var avatar_url: String,
@@ -31,4 +34,4 @@ data class User(
     var owned_private_repos: Int,
     var disk_usage: Int,
     var collaborators: Int
-)
+) : Parcelable

@@ -4,25 +4,17 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.view.View
-import android.widget.AutoCompleteTextView
-import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import com.example.common.otherwise
 import com.example.common.yes
 import com.example.github.R
 import com.example.github.presenter.LoginPresenter
 import com.example.github.utils.hideSoftInput
 import com.example.mvp.impl.BaseActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
-
 class LoginActivity : BaseActivity<LoginPresenter>() {
 
-    private val signInButton by lazy { findViewById<Button>(R.id.signInButton) }
-    private val username by lazy { findViewById<AutoCompleteTextView>(R.id.username) }
-    private val password by lazy { findViewById<EditText>(R.id.password) }
-    private val loginForm by lazy { findViewById<View>(R.id.loginForm) }
-    private val loginProgress by lazy { findViewById<ProgressBar>(R.id.loginProgress) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
