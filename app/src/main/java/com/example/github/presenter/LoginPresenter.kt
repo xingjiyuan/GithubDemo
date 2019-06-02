@@ -1,5 +1,6 @@
 package com.example.github.presenter
 
+import com.example.github.BuildConfig
 import com.example.github.model.account.AccountManager
 import com.example.github.view.LoginActivity
 import com.example.mvp.impl.BasePresenter
@@ -25,6 +26,10 @@ class LoginPresenter : BasePresenter<LoginActivity>() {
 
     override fun onResume() {
         super.onResume()
-        view.onDataInit(AccountManager.username, AccountManager.passwd)
+        if (BuildConfig.DEBUG) {
+            view.onDataInit(BuildConfig.testUserName, BuildConfig.testPassword)
+        } else {
+            view.onDataInit(AccountManager.username, AccountManager.passwd)
+        }
     }
 }
