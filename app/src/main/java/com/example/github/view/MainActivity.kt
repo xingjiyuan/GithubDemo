@@ -14,6 +14,8 @@ import com.example.github.model.account.AccountManager
 import com.example.github.model.account.OnAccountStateChangeListener
 import com.example.github.utils.doOnLayoutAvailable
 import com.example.github.utils.loadWithGlide
+import com.example.github.utils.showFragment
+import com.example.github.view.fragments.AboutFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity(), OnAccountStateChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+
 
         val toggle = ActionBarDrawerToggle(
             this,
@@ -40,6 +44,9 @@ class MainActivity : AppCompatActivity(), OnAccountStateChangeListener {
         initNavigationView()
 
         AccountManager.onAccountStateChangeListeners.add(this)
+
+        showFragment(R.id.fragmentContainer, AboutFragment::class.java)
+        title = "About"
     }
 
     override fun onDestroy() {
