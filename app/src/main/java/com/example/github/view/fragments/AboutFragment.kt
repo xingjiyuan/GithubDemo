@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import com.example.github.R
 import com.example.github.utils.markdownText
 import org.jetbrains.anko.*
-import org.jetbrains.anko.support.v4.UI
 import org.jetbrains.anko.support.v4.nestedScrollView
 
 /**
@@ -18,7 +17,13 @@ import org.jetbrains.anko.support.v4.nestedScrollView
 class AboutFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return UI {
+        return AboutFragmentUI().createView(AnkoContext.Companion.create(context!!, this))
+    }
+}
+
+class AboutFragmentUI : AnkoComponent<AboutFragment> {
+    override fun createView(ui: AnkoContext<AboutFragment>): View =
+        ui.apply {
             nestedScrollView {
                 verticalLayout {
                     imageView {
@@ -59,5 +64,5 @@ class AboutFragment : Fragment() {
                 }
             }
         }.view
-    }
+
 }
