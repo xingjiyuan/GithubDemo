@@ -1,14 +1,14 @@
 package com.example.github.view.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import cn.carbs.android.avatarimageview.library.AvatarImageView
 import com.example.github.R
 import com.example.github.utils.markdownText
 import org.jetbrains.anko.*
+import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.support.v4.nestedScrollView
 
 /**
@@ -25,6 +25,13 @@ class AboutFragmentUI : AnkoComponent<AboutFragment> {
     override fun createView(ui: AnkoContext<AboutFragment>): View = ui.apply {
         nestedScrollView {
             verticalLayout {
+
+                avatarImageView {
+                    setTextAndColorSeed("D", "11")
+                }.lparams(width = dip(60), height = dip(60)) {
+                    gravity = Gravity.CENTER_HORIZONTAL
+                }
+
                 imageView {
                     imageResource = R.mipmap.ic_launcher
                 }.lparams(width = wrapContent, height = wrapContent) {
@@ -64,4 +71,14 @@ class AboutFragmentUI : AnkoComponent<AboutFragment> {
         }
     }.view
 
+}
+
+inline fun ViewManager.avatarImageView(): AvatarImageView {
+    return avatarImageView { }
+}
+
+inline fun ViewManager.avatarImageView(init: (@AnkoViewDslMarker AvatarImageView).() -> Unit): AvatarImageView {
+    return ankoView({ ctx: Context -> AvatarImageView(ctx) }, theme = 0) {
+        init()
+    }
 }
