@@ -22,47 +22,46 @@ class AboutFragment : Fragment() {
 }
 
 class AboutFragmentUI : AnkoComponent<AboutFragment> {
-    override fun createView(ui: AnkoContext<AboutFragment>): View =
-        ui.apply {
-            nestedScrollView {
-                verticalLayout {
-                    imageView {
-                        imageResource = R.mipmap.ic_launcher
-                    }.lparams(width = wrapContent, height = wrapContent) {
-                        gravity = Gravity.CENTER_HORIZONTAL
-                    }
-                    textView("GitHub") {
-                        textColor = R.color.colorPrimary
-                    }.lparams(width = wrapContent, height = wrapContent) {
-                        gravity = Gravity.CENTER_HORIZONTAL
-                    }
-                    textView("By Demo") {
-                        textColor = R.color.colorPrimary
-                    }.lparams(width = wrapContent, height = wrapContent) {
-                        gravity = Gravity.CENTER_HORIZONTAL
-                    }
-                    textView(R.string.open_source_licenses) {
-                        textColor = R.color.colorPrimary
-                        setOnClickListener {
-                            alert {
-                                customView {
-                                    scrollView {
-                                        textView {
-                                            padding = dip(10)
-                                            markdownText =
-                                                context.assets.open("licenses.md").bufferedReader().readText()
-                                        }
+    override fun createView(ui: AnkoContext<AboutFragment>): View = ui.apply {
+        nestedScrollView {
+            verticalLayout {
+                imageView {
+                    imageResource = R.mipmap.ic_launcher
+                }.lparams(width = wrapContent, height = wrapContent) {
+                    gravity = Gravity.CENTER_HORIZONTAL
+                }
+                themedTextView("GitHub", R.style.detail_title) {
+                    textColor = R.color.colorPrimary
+                }.lparams(width = wrapContent, height = wrapContent) {
+                    gravity = Gravity.CENTER_HORIZONTAL
+                }
+                themedTextView("By Demo", R.style.detail_description) {
+                    textColor = R.color.colorPrimary
+                }.lparams(width = wrapContent, height = wrapContent) {
+                    gravity = Gravity.CENTER_HORIZONTAL
+                }
+                themedTextView(R.string.open_source_licenses, R.style.detail_description) {
+                    textColor = R.color.colorPrimary
+                    setOnClickListener {
+                        alert {
+                            customView {
+                                scrollView {
+                                    textView {
+                                        padding = dip(10)
+                                        markdownText =
+                                            context.assets.open("licenses.md").bufferedReader().readText()
                                     }
                                 }
-                            }.show()
-                        }
-                    }.lparams(width = wrapContent, height = wrapContent) {
-                        gravity = Gravity.CENTER_HORIZONTAL
+                            }
+                        }.show()
                     }
                 }.lparams(width = wrapContent, height = wrapContent) {
-                    gravity = Gravity.CENTER
+                    gravity = Gravity.CENTER_HORIZONTAL
                 }
+            }.lparams(width = wrapContent, height = wrapContent) {
+                gravity = Gravity.CENTER
             }
-        }.view
+        }
+    }.view
 
 }
